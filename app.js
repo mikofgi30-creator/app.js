@@ -1,3 +1,37 @@
+const tg = window.Telegram?.WebApp;
+
+if (tg) {
+  tg.expand();
+}
+
+let userId = null;
+
+let user = null;
+
+if (tg && tg.initDataUnsafe) {
+  user = tg.initDataUnsafe.user;
+}
+
+// fallback (если не из Telegram)
+if (!user) {
+  user = {
+    id: 123,
+    first_name: "Test User",
+    photo_url: "https://i.pravatar.cc/100"
+  };
+}
+
+userId = user.id;
+
+document.getElementById("username").innerText = user.first_name;
+document.getElementById("avatar").src = user.photo_url;
+
+
+
+
+
+
+
 const tg = window.Telegram.WebApp;
 tg.expand();
 
